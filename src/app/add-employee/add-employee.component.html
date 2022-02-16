@@ -1,0 +1,73 @@
+
+<form #frm="ngForm" (ngSubmit)="OnSubmit(frm.value)" >
+
+ <mat-form-field style="width:30%;margin-left:10%;margin-top:5%">
+    <mat-label >Enter Your Name</mat-label>
+    <input matInput type="text" name="Empname" ngModel>
+  </mat-form-field>
+
+  <mat-form-field style="width:30%;margin-left:10%">
+    <mat-label > Gender</mat-label>
+    <mat-select [(ngModel)]="selected" name="Gender" >
+      <mat-option *ngFor="let n of Gender" value={{n.name}} >{{ n.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field style="width:30%;margin-left:10%">
+    <mat-label>Date Of Birth</mat-label>
+    <input matInput [matDatepicker]="picker" name="DOB" ngModel>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+
+  <mat-form-field style="width:30%;margin-left:10%">
+    <mat-label >IDProof</mat-label>
+    <mat-select [(ngModel)]="proof" name="IDProofType" >
+      <mat-option *ngFor="let n of IDProofType" value={{n.name}} >{{ n.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field style="width:30%;margin-left:10%">
+    <mat-label >IDProofNumber</mat-label>
+    <input matInput name="IDProofNumber" ngModel>
+  </mat-form-field>
+
+  <mat-form-field style="width:30%;margin-left:10%">
+    <mat-label >Phone</mat-label>
+    <input matInput name="Phone" ngModel >
+  </mat-form-field> 
+
+  <br>
+
+  <mat-form-field style="width:30%;margin-left:10%">
+    <mat-label >BloodGroup</mat-label>
+    <mat-select [(ngModel)]="blood" name="BloodGroup">
+      <mat-option *ngFor="let n of BloodGroup" value={{n.name}} >{{ n.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+    <mat-form-field style="width:30%;margin-left:10%">
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="abc@email.com" ngModel name="emailID">
+    </mat-form-field>
+
+  <br>
+
+  <mat-form-field style="width:30%;margin-left:10%">
+    <mat-label >Enter Your Address</mat-label>
+    <textarea matInput name="EmpAddress" ngModel  ></textarea>
+  </mat-form-field>
+  
+  <br>
+
+
+  <button  type="submit" name="save" class="regbutton" mat-raised-button>Register</button>
+
+  </form>
+
+
