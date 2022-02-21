@@ -7,13 +7,14 @@
    
     <br>
    
-    <mat-form-field style="width:30%;margin-left:10%;">
+    <mat-form-field style="width:30%;margin-left:10%">
       <mat-label >Enter Your Name</mat-label>
-      <input matInput type="text" minlength="4" maxlength="30" name="Empname" #name="ngModel" [(ngModel)]="dataItem.EmpName" required>
+      <input matInput type="text" minlength="4" maxlength="30" name="EmpName" pattern="^[a-zA-z]+([\s][a-zA-Z]+)*$" #name="ngModel" [(ngModel)]="dataItem.EmpName" required>
       <small class="form-text text-muted" *ngIf="name.touched && !name.valid">This field is required*</small>
       <div *ngIf="name.errors?.['minlength']">
         Name must be at least 4 characters long.
       </div>
+      <div *ngIf="name.errors?.['pattern']">Name must be in Charecters.</div>
    </mat-form-field>
 
    <mat-form-field style="width:30%;margin-left:10%">
@@ -62,10 +63,10 @@
 
    <mat-form-field style="width:30%;margin-left:10%">
       <mat-label >Phone</mat-label>
-      <input matInput name="Phone"   pattern="^((\\+91-?)|0)?[0-9]{10}$" #Phone="ngModel" [(ngModel)]="dataItem.Phone" required>
+      <input matInput name="Phone"   pattern="^[0-9]{10}$" #Phone="ngModel" [(ngModel)]="dataItem.Phone" required>
       <small class="form-text text-muted" *ngIf="Phone.touched && !Phone.valid">This field is required*</small>
-      <div *ngIf="Phone.errors?.['pattern']">Enter only number.</div>
-   </mat-form-field>   
+      <div *ngIf="Phone.errors?.['pattern']">Enter a valid Mobile No.</div>
+   </mat-form-field>    
 
    <mat-form-field style="width:30%;margin-left:10%">
       <mat-label >BloodGroup</mat-label>

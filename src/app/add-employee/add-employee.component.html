@@ -4,11 +4,12 @@
   
     <mat-form-field style="width:30%;margin-left:10%;margin-top:5%">
        <mat-label >Enter Your Name</mat-label>
-       <input matInput type="text" minlength="4" maxlength="30" name="Empname" #name="ngModel" ngModel required>
+       <input matInput type="text" minlength="4" maxlength="30" name="Empname" pattern="^[a-zA-z]+([\s][a-zA-Z]+)*$" #name="ngModel" ngModel required>
        <small class="form-text text-muted" *ngIf="name.touched && !name.valid">This field is required*</small>
        <div *ngIf="name.errors?.['minlength']">
          Name must be at least 4 characters long.
        </div>
+       <div *ngIf="name.errors?.['pattern']">Name must be in Charecters.</div>
     </mat-form-field>
 
     <mat-form-field style="width:30%;margin-left:10%">
@@ -57,17 +58,16 @@
 
     <mat-form-field style="width:30%;margin-left:10%">
        <mat-label >Phone</mat-label>
-       <input matInput name="Phone"   pattern="^((\\+91-?)|0)?[0-9]{10}$" #Phone="ngModel"ngModel required>
+       <input matInput name="Phone"   pattern="^[0-9]{10}$" #Phone="ngModel"ngModel required>
        <small class="form-text text-muted" *ngIf="Phone.touched && !Phone.valid">This field is required*</small>
-       <div *ngIf="Phone.errors?.['pattern']">Enter only number.</div>
+       <div *ngIf="Phone.errors?.['pattern']">Enter a valid Mobile No.</div>
     </mat-form-field>   
  
     <mat-form-field style="width:30%;margin-left:10%">
        <mat-label >BloodGroup</mat-label>
-       <mat-select [(ngModel)]="blood" name="BloodGroup" #bloodgroup="ngModel" required>
+       <mat-select [(ngModel)]="blood" name="BloodGroup" #bloodgroup="ngModel" >
          <mat-option *ngFor="let n of BloodGroup" value={{n.name}} >{{ n.name }}</mat-option>
        </mat-select>
-       <small class="form-text text-muted" *ngIf="bloodgroup.touched && !bloodgroup.valid">This field is required*</small>
     </mat-form-field>
     
     <br>
