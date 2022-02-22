@@ -94,7 +94,7 @@
    <br>
  
    <mat-label style="width:150px;margin-left:10%;align-items: center;">UPLOAD YOUR PICTURE</mat-label><br>
-   <img style="margin-left: 10%;" [src]=PhotoFilePath height="150px" width="150px">
+   <img style="margin-left: 10%;" [src]="PhotoFilePath||PhotoURL+dataItem.PhotoName" height="150px" width="150px">
     <input style="width:30%;margin-left:2%" type="file" (change)="OnFileSelected($event)"> 
    <br>
 

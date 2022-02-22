@@ -21,13 +21,10 @@ export class UpdateEmployeeComponent implements OnInit {
     this.service.UploadPhoto(formData).subscribe((data:any)=>{
       this.PhotoName=data.toString();
       this.PhotoFilePath=this.service.photoUrl+this.PhotoName;
-    })
+      })
   }
-  loadimage()
-  {
-    console.log(this.PhotoName);
-    this.PhotoFilePath=this.service.photoUrl+this.PhotoName;
-  }
+
+  PhotoURL="http://localhost:57823/Photos/";
 
   Department=[ {name:'HR'},{name:'R & D'},{name:'Marketing'}];
   Dep:string='';
@@ -61,7 +58,8 @@ export class UpdateEmployeeComponent implements OnInit {
     ) { }
 
     OnSubmit(val: any)
-    {    
+    {   
+        val.PhotoName=this.PhotoName; 
         console.log(val);
         this.service.updateEmployee(val).subscribe(result=>{alert(result.toString())});
    }
@@ -74,7 +72,6 @@ export class UpdateEmployeeComponent implements OnInit {
         this.employee=val;
         console.log(this.employee);
       })  
-      this.loadimage();
     }
 
 }
